@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- swiper 기능을 쓰려면 밑에 기능들이 필요하다 css/js -->
+   <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+   <!-- Swiper JS -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+
+    }
+    
+/* 절대 값을 건들지 않음 => .swiper , .swiper-wrapper*/
+.swiper {
+      width: 100%;
+      height: 100%;
+      margin-top: 50px;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .sw-event{
+        width: 70%;
+        height: 500px;
+    }
+    .sw-event .swiper-pagination-bullet {
+    width: var(--swiper-pagination-bullet-width , var(--swiper-pagination-bullet-size, 50px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 10px));
+    display: inline-block;
+    border-radius: var(--swiper-pagination-bullet-border-radius, 10%);
+    background: #d93d0c;
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, .2);
+}
+    .sw-event .swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: #ff00c6;
+}
+
+.sw-event .swiper-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic, .swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.sw-event2 img{
+    width: 100%;
+    height: 70%
+}
+.sw-event2 .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: var(--swiper-pagination-bottom, 160px);
+    top: var(--swiper-pagination-top, auto);
+    left: 0px;
+    width: 100%;
+}
+.sw-event2 .swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: #fdd862;
+    width: 115px;
+    height: 10px;
+    border-radius: 0;
+}
+.sw-event2 .swiper-pagination-bullet {
+    width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 8px));
+    height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 8px));
+    display: inline-block;
+    border-radius: var(--swiper-pagination-bullet-border-radius, 50%);
+    background: var(--swiper-pagination-bullet-inactive-color, #000);
+    opacity: var(--swiper-pagination-bullet-inactive-opacity, .2);
+}
+  </style>
+</head>
+<body>
+     <!-- Swiper -->
+      <!-- swiper다음 오는 이름은 이름을 꼭 바꾸어 줘여 한다!! -->
+  <div class="swiper sw-event">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">Slide 4</div>
+          <div class="swiper-slide">Slide 5</div>
+          <div class="swiper-slide">Slide 6</div>
+          <div class="swiper-slide">Slide 7</div>
+          <div class="swiper-slide">Slide 8</div>
+          <div class="swiper-slide">Slide 9</div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+        <div class="swiper sw-event2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/banner.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/banner2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/banner3.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/banner4.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="images/banner5.jpg" alt=""></div>
+                
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+      <!-- Initialize Swiper => 내부 스크립트 연결 한 것--> 
+  <script>
+    // var 이후 변수선언(swEvent) 수정해주어야 함 , new 다음은 무조건 대문자로 시작
+    // .sw-event 꼭 앞에 넣어줘야 함 => nextEl,prevEl
+   
+    var swDynamic = new Swiper(".sw-event", {
+      pagination: {
+        el: ".sw-event .swiper-pagination",
+        dynamicBullets: true,
+      },
+    });
+  </script>
+  <!-- 스와이퍼 그룹으로 -->
+  <script>
+    var swiperNav = new Swiper(".sw-event1", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+  <!-- 오토 그룹 -->
+  <script>
+    var swiper = new Swiper(".sw-event2", {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".sw-event2 .swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".sw-event2  .swiper-button-next",
+        prevEl: ".sw-event2  .swiper-button-prev",
+      },
+    });
+  </script>
+</body>
+</html>
